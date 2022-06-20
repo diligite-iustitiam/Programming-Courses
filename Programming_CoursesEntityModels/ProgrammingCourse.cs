@@ -11,7 +11,7 @@ namespace Course.Shared
     {
         [Key]
         [Column(TypeName = "INT IDENTITY(1,1)")]
-        public long CourseId { get; set; }
+        public int CourseId { get; set; }
         [Column(TypeName = "VARCHAR(60)")]
         public string CourseName { get; set; } = null!;
         [Column(TypeName = "VARCHAR(60)")]
@@ -19,7 +19,7 @@ namespace Course.Shared
         [Column(TypeName = "VARCHAR(1000)")]
         public string Description { get; set; } = null!;
         [Column(TypeName = "DECIMAL")]
-        public byte[]? Price { get; set; }
+        public decimal Price { get; set; }
         [Column(TypeName = "VARCHAR(100)")]
         public string? FutureJob { get; set; }
     }
