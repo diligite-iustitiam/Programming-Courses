@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Courses_Shared
+namespace Course.Shared
 {
     [Table("Programming_Courses")]
     public partial class ProgrammingCourse

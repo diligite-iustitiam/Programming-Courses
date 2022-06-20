@@ -5,11 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="6.0.6" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="C:\Users\User\source\repos\Programming-Courses\Programming_Courses_EntityModels\Programming_Courses_EntityModels.csproj" />
+	<!-- change Sqlite to SqlServer if you prefer -->
+	<ProjectReference Include="..\Programming_CoursesEntityModels\Programming_CoursesEntityModels.csproj" />
 	</ItemGroup>
 
 </Project>

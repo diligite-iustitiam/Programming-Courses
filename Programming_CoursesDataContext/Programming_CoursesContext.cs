@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Courses_Shared
+namespace Course.Shared
 {
-    public partial class ProgrammingCoursesContext : DbContext
+    public partial class Programming_CoursesContext : DbContext
     {
-        public ProgrammingCoursesContext()
+        public Programming_CoursesContext()
         {
         }
 
-        public ProgrammingCoursesContext(DbContextOptions<ProgrammingCoursesContext> options)
+        public Programming_CoursesContext(DbContextOptions<Programming_CoursesContext> options)
             : base(options)
         {
         }
 
         
         public virtual DbSet<ProgrammingCourse> ProgrammingCourses { get; set; } = null!;
-       
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,7 +38,6 @@ namespace Courses_Shared
                 entity.Property(e => e.CourseId).ValueGeneratedNever();
             });
 
-           
 
             OnModelCreatingPartial(modelBuilder);
         }

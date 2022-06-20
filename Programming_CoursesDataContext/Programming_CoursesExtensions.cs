@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore; // UseSqlite
 using Microsoft.Extensions.DependencyInjection; // IServiceCollection
-
-namespace Courses_Shared
+namespace Course.Shared
 {
-    public static class ProgrammingCoursesContextExtensions
+    public static class CourseContextExtensions
     {
         /// <summary>
         /// Adds NorthwindContext to the specified IServiceCollection. Uses the Sqlite database provider.
@@ -11,12 +10,12 @@ namespace Courses_Shared
         /// <param name="services"></param>
         /// <param name="relativePath">Set to override the default of ".."</param>
         /// <returns>An IServiceCollection that can be used to add more services.</returns>
-        public static IServiceCollection AddCoursesContext(
+        public static IServiceCollection AddNorthwindContext(
           this IServiceCollection services, string relativePath = "..")
         {
             string databasePath = Path.Combine(relativePath, "Northwind.db");
 
-            services.AddDbContext<ProgrammingCoursesContext>(options =>
+            services.AddDbContext<Programming_CoursesContext>(options =>
               options.UseSqlite($"Data Source={databasePath}")
               .UseLoggerFactory(new ConsoleLoggerFactory())
             );
@@ -24,4 +23,5 @@ namespace Courses_Shared
             return services;
         }
     }
+
 }

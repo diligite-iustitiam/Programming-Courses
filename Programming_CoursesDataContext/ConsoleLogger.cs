@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Microsoft.Extensions.Logging;
+
 using static System.Console;
 
-namespace Courses_Shared
+namespace Course.Shared
 {
     public class ConsoleLoggerFactory : ILoggerFactory
     {
@@ -67,4 +64,5 @@ namespace Courses_Shared
             }
         }
     }
+
 }
