@@ -33,6 +33,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICoursesRepository, CourseRepository>();
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
