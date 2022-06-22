@@ -10,8 +10,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="6.0.6" />
 	</ItemGroup>
 	<ItemGroup>
-	<!-- change Sqlite to SqlServer if you prefer -->
-	<ProjectReference Include="..\Programming_CoursesEntityModels\Programming_CoursesEntityModels.csproj" />
+		<ProjectReference Include="..\Programming_CoursesEntityModels\Programming_CoursesEntityModels.csproj" />
 	</ItemGroup>
 
 </Project>

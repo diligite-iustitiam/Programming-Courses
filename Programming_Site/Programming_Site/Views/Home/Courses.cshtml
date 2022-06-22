@@ -1,5 +1,4 @@
-﻿@using Course.Shared
-@model IEnumerable<ProgrammingCourse>
+﻿
 @{
     ViewData["Title"] = "Courses";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -47,15 +46,7 @@
           <div class="col-lg-4">
             <div class="portfolio-info">
               <h3>Project information</h3>   
-              @if(Model is not null){
-                  @foreach(ProgrammingCourse p in Model){
-              <ul>
-                <li> @Html.DisplayFor(model=> p.CourseName)</li>
-                <li> @Html.DisplayFor(model=> p.Description)</li>
-                <li> @Html.DisplayFor(model=> p.Duration)</li>
-                <li> @Html.DisplayFor(model=> p.Price)</li>
-                <li> @Html.DisplayFor(model=>p.FutureJob)</li>
-              </ul>
+             
                   }
               }
             </div>

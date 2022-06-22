@@ -36,9 +36,6 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
-	<ItemGroup>
-		<!-- change Sqlite to SqlServer if you prefer -->
-		<ProjectReference Include="..\Programming_CoursesDataContext\Programming_CoursesDataContext.csproj" />
-	</ItemGroup>
+	
 
 </Project>
