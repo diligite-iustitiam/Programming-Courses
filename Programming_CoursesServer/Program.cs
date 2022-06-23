@@ -34,6 +34,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICoursesRepository, CourseRepository>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddCors();
+builder.WebHost.UseUrls("https://localhost:7225/");
+builder.Services.AddHttpLogging(options =>
+{
+    options.LoggingFields = HttpLoggingFields.All;
+    options.RequestBodyLogLimit = 4096; // default is 32k
+    options.ResponseBodyLogLimit = 4096; // default is 32k
+});
 
 var app = builder.Build();
 

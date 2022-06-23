@@ -1,12 +1,14 @@
+using Course.Shared;
 using Programming_Site.Controllers;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 var SqlLiteconnection = builder.Configuration.GetConnectionString("NorthwindConnection");
+builder.Services.AddNorthwindContext();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

@@ -36,6 +36,9 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
-	
+	<ItemGroup>
+		<ProjectReference Include="C:\Users\User\source\repos\Programming-Courses\Programming_CoursesDataContext\Programming_CoursesDataContext.csproj" />
+	</ItemGroup>
+
 
 </Project>
