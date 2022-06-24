@@ -29,6 +29,7 @@
 
       </div>
     </section><!-- End Breadcrumbs -->
+   
 
     <section class="inner-page">
       <div class="container">
@@ -38,61 +39,27 @@
 
     <table class="center">
         <tr id="header">
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Age</th>
-            <th>Country</th>
-            <th>Gender</th>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>FutureJob</th>
+            <th>Price</th>
         </tr>
-        <tr>
-            <td>John </td>
-            <td>Doe </td>
-            <td>25 </td>
-            <td>USA </td>
-            <td>Male </td>
+                @if (Model is not null)
+                {
+                    @foreach (ProgrammingCourse p in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(c=>p.CourseName)</td>
+                            <td>@Html.DisplayFor(c=>p.Duration)</td>
+                            <td>@Html.DisplayFor(c=>p.FutureJob)</td>
+                            <td>@Html.DisplayFor(c=>p.Price)</td>
 
-        </tr>
-        <tr>
-            <td>steve </td>
-            <td>Doe </td>
-            <td>28 </td>
-            <td>USA </td>
-            <td>Male </td>
+                        </tr>
+                        
 
-        </tr>
-        <tr>
-            <td>simo </td>
-            <td>Doe </td>
-            <td>26 </td>
-            <td>USA </td>
-            <td>Male </td>
-
-        </tr>
-        <tr>
-            <td>karim </td>
-            <td>Doe </td>
-            <td>21 </td>
-            <td>USA </td>
-            <td>Male </td>
-
-        </tr>
-        <tr>
-            <td>adam </td>
-            <td>Doe </td>
-            <td>20 </td>
-            <td>USA </td>
-            <td>Male </td>
-
-        </tr>
-        <tr>
-            <td>keven </td>
-            <td>Doe </td>
-            <td>20 </td>
-            <td>USA </td>
-            <td>Male </td>
-
-        </tr>
-
+        
+        }
+        }
     </table>
 
       </div>

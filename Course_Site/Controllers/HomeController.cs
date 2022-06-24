@@ -41,6 +41,7 @@ namespace Course_Site.Controllers
         [HttpGet]
         public IActionResult GetCourse(string? course)
         {
+            course = course.ToUpper();
             if (course == null)
             {
                 return NotFound();
