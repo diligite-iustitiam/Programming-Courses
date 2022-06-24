@@ -38,6 +38,7 @@ namespace Course_Site.Controllers
             IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToArray();
             return View(courses);
         }
+        [HttpGet]
         public IActionResult GetCourse(string? course)
         {
             if (course == null)
