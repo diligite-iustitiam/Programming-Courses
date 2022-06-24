@@ -5,9 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,26 +12,31 @@
     <title>Table</title>
 </head>
 
-<section id="breadcrumbs" class="breadcrumbs">
+
+ <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
+          <h2>Inner Page</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Portfolio Details</li>
+            <li>Inner Page</li>
           </ol>
         </div>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-<body>
-
+    <section class="inner-page">
+      <div class="container">
+        
     <h1>Hoverable Table</h1>
     <hr>
 
-    <table>
+    <table class="center">
         <tr id="header">
             <th>First name</th>
             <th>Last name</th>
@@ -93,9 +95,10 @@
 
     </table>
 
-</body>
+      </div>
+    </section>
 
-</main><!-- End #main -->
+  </main><!-- End #main -->
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
