@@ -1,0 +1,41 @@
+﻿@using Course.Shared
+@model IEnumerable<ProgrammingCourse>
+@{
+    ViewData["Title"] = "GetCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Category Name</th>
+        <th>Film Id</th>
+        <th>Film Name</th>
+        <th>Description</th>
+        <th>IMDB</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (ProgrammingCourse p in Model)
+      {
+        <tr>
+          <td>
+            @Html.DisplayFor(modelItem => p.CourseName)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => p.Description)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => p.Duration)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => p.FutureJob)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => p.Price)
+          </td>
+        </tr>
+      }
+    <tbody>
+  </table>
+

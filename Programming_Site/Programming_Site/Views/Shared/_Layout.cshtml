@@ -41,6 +41,7 @@
           <li>@Html.ActionLink(" Inner Page ","Inner_Page","Home", new{@class ="nav-link"})</li>
           <li>@Html.ActionLink(" Portfolio ","Portfolio_Details","Home", new{@class ="nav-link"})</li>
           <li>@Html.ActionLink(" Courses ","Courses","Home", new{@class ="nav-link"})</li>
+          
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -62,8 +63,19 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+    
+   
+    <meta charset="utf-8">     
+    <link rel="stylesheet" href="~/css/search.css">  
+        <div class="box">
+    <form asp-action="GetCourse" method="get">
+        <input type="text" name="" placeholder="Type...">
+        <input type="submit" name="" value="Search">
+    </form>
+    
+    
+    
 
-      <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>
   </header><!-- End Header -->
