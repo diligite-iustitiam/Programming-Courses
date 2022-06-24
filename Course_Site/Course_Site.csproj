@@ -19,6 +19,9 @@
 	</ItemGroup>
   
 	<ItemGroup>
+		<ProjectReference Include="..\Course_Server\Course_Server.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\Programming_CoursesDataContext\Programming_CoursesDataContext.csproj" />
 	</ItemGroup>
 </Project>
