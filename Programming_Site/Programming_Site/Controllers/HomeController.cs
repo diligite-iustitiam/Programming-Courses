@@ -32,10 +32,22 @@ namespace Programming_Site.Controllers
         {
             return View();
         }
+        
         public IActionResult Courses()
         {
-            IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToList();
+            IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToArray();
             return View(courses);
+        }
+        public IActionResult GetCourse(string? course)
+        {
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            IEnumerable<ProgrammingCourse> model = db.ProgrammingCourses.Where(x => x.CourseName.Contains(course)).ToList();
+
+            return View(model);
         }
 
 
