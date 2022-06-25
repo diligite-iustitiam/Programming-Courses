@@ -15,7 +15,7 @@ body {
     
 }
 
-.pagination_ul {
+ul.pagination {
     position: relative;
     
     display: flex;
@@ -24,40 +24,40 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,.2);
 }
 
-    ul li {
+    ul.pagination li.pagination_li {
         list-style: none;
         line-height: 50px;
         margin: 0 5px;
     }
 
-        ul li.pageNumber {
-            width: 50px;
-            height: 50px;
-            text-align: center;
-        }
+    ul.pagination li.pageNumber {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+    }
 
-        ul li a {
-            display: block;
-            text-decoration: none;
-            color: #777;
-            font-weight: 600;
-            border-radius: 50%;
-        }
+    ul.pagination li.pagination_li a.pagination_a {
+        display: block;
+        text-decoration: none;
+        color: #777;
+        font-weight: 600;
+        border-radius: 50%;
+    }
 
-        ul li.pageNumber:hover a,
-        ul li.pageNumber.active a {
-            background: #333;
-            color: #fff;
-        }
+    ul.pagination li.pageNumber:hover a.pagination_a,
+    ul.pagination li.pageNumber.active a.pagination_a {
+        background: #333;
+        color: #fff;
+    }
 
-        ul li:first-child {
-            margin-right: 30px;
-            font-weight: 700;
-            font-size: 20px;
-        }
+    ul.pagination li.pagination_li:first-child {
+        margin-right: 30px;
+        font-weight: 700;
+        font-size: 20px;
+    }
 
-        ul li:last-child {
-            margin-left: 30px;
-            font-weight: 700;
-            font-size: 20px;
-        }
+    ul.pagination li.pagination_li:last-child {
+        margin-left: 30px;
+        font-weight: 700;
+        font-size: 20px;
+    }
