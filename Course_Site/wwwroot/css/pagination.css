@@ -1,78 +1,63 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-	display: block;
-	align-items: center;
-	justify-content: center;
-	background: #20B2AA;
-	min-height: 100vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
 }
 
-.center {
-	margin-left: auto;
-	margin-right: auto;
+.pagination_ul {
+    position: relative;
+    
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
 }
 
-.pagination ul {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	background: #fff;
-	padding: 8px;
-	border-radius: 50px;
-	box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
-}
+    ul li {
+        list-style: none;
+        line-height: 50px;
+        margin: 0 5px;
+    }
 
-	.pagination ul li {
-		color: #20B2AA;
-		list-style: none;
-		line-height: 45px;
-		text-align: center;
-		font-size: 18px;
-		font-weight: 500;
-		cursor: pointer;
-		user-select: none;
-		transition: all 0.3s ease;
-	}
+        ul li.pageNumber {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
 
-		.pagination ul li.numb {
-			list-style: none;
-			height: 45px;
-			width: 45px;
-			margin: 0 3px;
-			line-height: 45px;
-			border-radius: 50%;
-		}
+        ul li a {
+            display: block;
+            text-decoration: none;
+            color: #777;
+            font-weight: 600;
+            border-radius: 50%;
+        }
 
-			.pagination ul li.numb.first {
-				margin: 0px 3px 0 -5px;
-			}
+        ul li.pageNumber:hover a,
+        ul li.pageNumber.active a {
+            background: #333;
+            color: #fff;
+        }
 
-			.pagination ul li.numb.last {
-				margin: 0px -5px 0 3px;
-			}
+        ul li:first-child {
+            margin-right: 30px;
+            font-weight: 700;
+            font-size: 20px;
+        }
 
-		.pagination ul li.dots {
-			font-size: 22px;
-			cursor: default;
-		}
-
-		.pagination ul li.btn {
-			padding: 0 20px;
-			border-radius: 50px;
-		}
-
-		.pagination li.active,
-		.pagination ul li.numb:hover,
-		.pagination ul li:first-child:hover,
-		.pagination ul li:last-child:hover {
-			color: #fff;
-			background: #20B2AA;
-		}
+        ul li:last-child {
+            margin-left: 30px;
+            font-weight: 700;
+            font-size: 20px;
+        }
