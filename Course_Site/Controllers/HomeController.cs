@@ -33,9 +33,10 @@ namespace Course_Site.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Courses()
         {
-            IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToArray();
+            IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToList();
             return View(courses);
         }
         [HttpGet]
