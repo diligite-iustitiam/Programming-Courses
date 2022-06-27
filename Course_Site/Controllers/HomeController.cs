@@ -36,6 +36,10 @@ namespace Course_Site.Controllers
         {
             return View();
         }
+        public IActionResult DashBoard()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult Courses()
         {
@@ -43,6 +47,7 @@ namespace Course_Site.Controllers
             IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToList();
             return View(courses);
         }
+        
         [HttpGet]
         public IActionResult GetCourse(string? course)
         {
