@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-    position: relative;
+    position: sticky;
     width: 100%;
 }
 
@@ -129,19 +129,21 @@ body {
     position: absolute;
     width: calc(100%-400px);
     top: 0px;
-    left: 400px;
+    left: 320px;
     min-height: 100vh;
 /*    background: var(--white);
 */    transition: 0.5s;
 }
 
 .topbar {
-    width: 100%;
+    position: relative;
+    width: 1200px;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
+    margin: 0;
 }
 
 .toggle {
@@ -172,7 +174,7 @@ body {
             padding: 5px 20px;
             padding-left: 35px;
             font-size: 18px;
-            padding: 5px 20px;
+            padding: 5px 30px;
             outline: none;
             border: 1px solid var(--black2);
         }
@@ -180,7 +182,7 @@ body {
         .search label ion-icon
         {
             position: absolute;
-            top: 0;
+            top: 10px;
             left: 10px;
             font-size: 1.2em;
         }
