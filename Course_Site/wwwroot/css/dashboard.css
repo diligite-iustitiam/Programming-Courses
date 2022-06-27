@@ -127,7 +127,7 @@ body {
 
 .main {
     position: absolute;
-    width: calc(100%-400px);
+    width: 1000px;
     top: 0px;
     left: 320px;
     min-height: 100vh;
@@ -136,14 +136,11 @@ body {
 }
 
 .topbar {
-    position: relative;
-    width: 1200px;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
-    margin: 0;
 }
 
 .toggle {
