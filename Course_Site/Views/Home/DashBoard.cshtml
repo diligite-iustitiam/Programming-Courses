@@ -1,6 +1,8 @@
 ﻿
 @{
     ViewData["Title"] = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 }
 
 <!DOCTYPE html>
@@ -153,8 +155,8 @@
                 <div class="box"><canvas id="earning"></canvas>
                     </div>
             </div>
+            
             <!-- data list -->
-
             <div class="details">
             <div class="recentOrders">
                 <div class="cardHeader">
@@ -180,27 +182,27 @@
 <td>Window Coolers</td>
     <td>$110</td>
     <td>Due</td>
-    <td><span class="status pending"></span></td>
+    <td><span class="status pending">Pending</span></td>
 </tr>
 <tr>
 <td>Speakers</td>
     <td>$620</td>
     <td>Paid</td>
-    <td><span class="status return"></span></td>
+    <td><span class="status return">Return</span></td>
 </tr>
 
 <tr>
 <td>Hp Laptop</td>
     <td>$1100</td>
     <td>Due</td>
-    <td><span class="status inprogress"></span></td>
+    <td><span class="status inprogress">In Progress</span></td>
 </tr>
     
 <tr>
 <td>Apple Watch</td>
     <td>$1200</td>
     <td>Paid</td>
-    <td><span class="status delivered"></span></td>
+    <td><span class="status delivered">Delivered</span></td>
 </tr>
 <tr>
 <td>Wall Fan</td>
@@ -241,7 +243,7 @@
 </tr>
                 </table>
             </div>
-<!-- New Clients -->
+                <!-- New Clients -->
                 <div class="recentCustomers">
                 <div class="cardHeader">
                     <h2>Recent Customers</h2>
@@ -252,64 +254,62 @@
                     
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-1.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-2.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-3.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-4.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-5.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-1.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-1.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     <tr>
                     
-                    <td width="60px"><div class="imgBx"><img src="~/img/testimonials/testimonials-1.jpg"></div></td>
+                    <td width="60px"><div class="imgBx"><img src="C:/Users/User/source/repos/Programming-Courses/Course_Site/wwwroot/img/testimonials/testimonials-2.jpg"></div></td>
                         <td><h4>David<br><span>Italy</span></h4></td>
                     </tr>
                     </table>
             </div>
         </div>
         </div>
-        </div>
     </div>
-            </div>
-                    </div>
-
-        </div>
-
-    
-        </section><!-- End Portfolio Details Section -->
-
-
+    </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
     <script src="~/js/my_chart.js"></script>
     <script>
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+        toggle.onclick = function(){
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
     let list = document.querySelectorAll('.navigation li');
         function activeLink(){
             list.forEach((item)=>
