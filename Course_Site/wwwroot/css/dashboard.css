@@ -17,7 +17,7 @@
 
 body {
     min-height: 100vh;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .container {
@@ -398,7 +398,7 @@ details .recentOrders table tr td:nth-child(3) {
 
         .recentCustomers .imgBx img {
             position: absolute;
-            top 0;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;

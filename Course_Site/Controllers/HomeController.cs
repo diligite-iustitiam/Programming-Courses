@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Course_Site.Controllers
 {
-    public class HomeController : Controller
+     public  class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Programming_CoursesContext db;
@@ -18,6 +18,7 @@ namespace Course_Site.Controllers
             this.db = db;
 
         }
+       
 
         public IActionResult Index()
         {
