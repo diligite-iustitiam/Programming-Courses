@@ -1,15 +1,18 @@
 ﻿
 @{
     ViewData["Title"] = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<!DOCTYPE html>
-<html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="~/css/dashboard.css">
 </head>
-<body>
+
+    <main id="main">
+
         <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
@@ -24,6 +27,7 @@
 
         </div>
     </section><!-- End Breadcrumbs -->
+        <section id="portfolio-details" class="portfolio-details">
 
     <div class="container">
         <div class="navigation">
@@ -80,7 +84,7 @@
             </ul>
         </div>
         <!-- main -->
-        <div class="main">
+        <div class="mainclass">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
@@ -291,8 +295,13 @@
             </div>
         </div>
         </div>
+        </div>
     </div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    </section>
+    </main>
+    <div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
     <script src="~/js/my_chart.js"></script>
@@ -306,5 +315,14 @@
         list.forEach((item) =>
                      item.addEventListener('mouseover,activeLink'));
     </script>
-</body>
-</html>
+<!-- Vendor JS Files -->
+<script src="~/vendor/purecounter/purecounter.js"></script>
+<script src="~/vendor/aos/aos.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="~/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="~/js/main.js"></script> 
