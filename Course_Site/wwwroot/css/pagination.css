@@ -51,13 +51,13 @@ ul.pagination {
     }
 
     ul.pagination li.pagination_li:first-child {
-        margin-right: 30px;
-        font-weight: 700;
-        font-size: 20px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
     }
 
     ul.pagination li.pagination_li:last-child {
-        margin-left: 30px;
-        font-weight: 700;
-        font-size: 20px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
     }
