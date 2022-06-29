@@ -3,6 +3,7 @@ using Course_Site.Models;
 using System.Diagnostics;
 using Course.Shared;
 
+
 using System.Linq;
 
 namespace Course_Site.Controllers
@@ -41,12 +42,28 @@ namespace Course_Site.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult Courses()
+        
+        
+
+        
+
+        
+        public IActionResult Courses(int pg = 1)
         {
 
-            IEnumerable<ProgrammingCourse> courses = db.ProgrammingCourses.ToList();
-            return View(courses);
+            List<ProgrammingCourse> courses = db.ProgrammingCourses.ToList();
+            const int pageSize = 1;
+            if (pg < 1)
+                pg = 1;
+            int recsCount = courses.Count;
+            var pager = new Pager(recsCount, pg, pageSize);
+            int recsSkip = (pg-1) * pageSize;
+            var data = courses.Skip(recsSkip).Take(pager.PageSize).ToList();
+            this.ViewBag.Pager = pager;
+
+
+            // return View(courses);
+            return View(data);
         }
         
         [HttpGet]
