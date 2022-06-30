@@ -11,8 +11,8 @@
         pager = ViewBag.Pager;
         PageNo = pager.CurrentPage;
     }
+    
 }
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,10 @@
     </section><!-- End Breadcrumbs -->
    
 
+
+   
+
+
     <section class="inner-page">
       <div class="container">
         
@@ -47,6 +51,7 @@
 
     <table class="center">
         <tr id="header">
+
             <th>Course Name</th>
             <th>Duration</th>
             <th>FutureJob</th>
@@ -54,21 +59,26 @@
         </tr>
                 @if (Model is not null)
                 {
+                    
                     @foreach (ProgrammingCourse p in Model)
                     {
                         
                     
-                            <tr>     
-                                <td>@Html.DisplayFor(c=>p.CourseName)</td>                               
-                                <td>@Html.DisplayFor(c=>p.Duration)</td>
+                            <tr id="tr">  
+                                
+                                <td id="td"> 
+                                    <a href="/Home/Courses?pg=@p.CourseId">@Html.DisplayFor(c=>p.CourseName)</a> 
+                                 </td>                             
+                                <td><a>@Html.DisplayFor(c=>p.Duration)</a></td>
                                 <td>@Html.DisplayFor(c=>p.FutureJob)</td>
                                 <td>@Html.DisplayFor(c=>p.Price)</td>
+                                
                            </tr>
                     
                     }
                 }
-                        
-
+                
+                
 
 
                 
@@ -77,6 +87,7 @@
 
       </div>
     </section>
+  
 
   </main><!-- End #main -->
   <div id="preloader"></div>
@@ -93,3 +104,8 @@
 
   <!-- Template Main JS File -->
   <script src="~/js/main.js"></script>
+
+  @{
+
+  }
+ 

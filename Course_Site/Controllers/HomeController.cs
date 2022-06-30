@@ -2,6 +2,7 @@
 using Course_Site.Models;
 using System.Diagnostics;
 using Course.Shared;
+using PagedList;
 
 
 using System.Linq;
@@ -85,6 +86,15 @@ namespace Course_Site.Controllers
             return View(model);
         }
 
+        public IActionResult Searching(int? page)
+        {
+            var courses = from c in db.ProgrammingCourses
+                          orderby c.CourseId
+                          select c;
+            int pagesize = 3;
+            int pageNumber = (page ?? 1);
+            return View(courses.ToPagedList(pageNumber, pagesize));
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
