@@ -42,13 +42,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a onclick="hideElements('show1');showElements('hide1 hide2 hide3');" href="#">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a onclick="hideElements('hide1 hide2 hide3');showElements('show1');" href="#">
                         <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Customers</span>
                     </a>
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <!-- cards -->
-            <div class="cardBox">
+            <div class="cardBox" id="hide1">
             <div class="card">
                 <div>
                 
@@ -150,16 +150,16 @@
             </div>
             <!-- Add Charts -->
             <div class="graphBox">
-            <div class="box"><canvas id="myChart"></canvas>
+            <div class="box" id="hide2"><canvas id="myChart"></canvas>
             
             </div>
-             <div class="box">
+             <div class="box" id="hide3">
                 <div class="box"><canvas id="earning"></canvas>
                     </div>
             </div>
             
             <!-- data list -->
-            <div class="details">
+            <div class="details" id="show1">
             <div class="recentOrders">
                 <div class="cardHeader">
                     <h2>Recent Orders</h2>
@@ -336,3 +336,28 @@
 
 <!-- Template Main JS File -->
 <script src="~/js/main.js"></script> 
+<script>
+    function hideElements(hideId) {
+    var idListHide = hideId.split(" ");
+    var resultsHide = [], itemHide;
+    for (var i = 0; i < idListHide.length; i++) {
+        itemHide = document.getElementById(idListHide[i]);
+        if (itemHide) {
+            resultsHide.push(itemHide);
+        }
+        resultsHide[i].style.display = "none";
+    }
+}
+    
+    function showElements(showId) {
+        var idListShow = showId.split(" ");
+        var resultsShow = [], itemShow;
+        for (var i = 0; i < idListShow.length; i++) {
+            itemShow = document.getElementById(idListShow[i]);
+            if (itemShow) {
+                resultsShow.push(itemShow);
+            }
+            resultsShow[i].style.display = "grid";
+        }
+    }
+</script>
