@@ -1,8 +1,16 @@
 ﻿@using Course.Shared
+@using Microsoft.AspNetCore.Mvc;
+
 @model IEnumerable<ProgrammingCourse>
 @{
-    ViewData["Title"] = "GetCourse";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "AllCourses";
+    Pager pager = new Pager();
+    int PageNo = 0;
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        PageNo = pager.CurrentPage;
+    }
 }
 
 <head>
@@ -48,18 +56,23 @@
                 {
                     @foreach (ProgrammingCourse p in Model)
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(c=>p.CourseName)</td>
-                            <td>@Html.DisplayFor(c=>p.Duration)</td>
-                            <td>@Html.DisplayFor(c=>p.FutureJob)</td>
-                            <td>@Html.DisplayFor(c=>p.Price)</td>
-
-                        </tr>
+                        
+                    
+                            <tr>     
+                                <td>@Html.DisplayFor(c=>p.CourseName)</td>                               
+                                <td>@Html.DisplayFor(c=>p.Duration)</td>
+                                <td>@Html.DisplayFor(c=>p.FutureJob)</td>
+                                <td>@Html.DisplayFor(c=>p.Price)</td>
+                           </tr>
+                    
+                    }
+                }
                         
 
+
+
+                
         
-        }
-        }
     </table>
 
       </div>
