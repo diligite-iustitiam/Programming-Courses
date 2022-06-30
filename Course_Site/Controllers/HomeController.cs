@@ -65,7 +65,12 @@ namespace Course_Site.Controllers
             // return View(courses);
             return View(data);
         }
-        
+        [HttpGet]
+        public IActionResult AllCourses()
+        {
+            var courses = db.ProgrammingCourses.ToList();
+            return View(courses);
+        }
         [HttpGet]
         public IActionResult GetCourse(string? course)
         {
