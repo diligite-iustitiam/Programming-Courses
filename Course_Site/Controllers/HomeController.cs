@@ -2,10 +2,13 @@
 using Course_Site.Models;
 using System.Diagnostics;
 using Course.Shared;
-using PagedList;
+using Course_Site.Data;
+
+using Microsoft.Extensions.Logging;
 
 
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Course_Site.Controllers
 {
@@ -13,15 +16,15 @@ namespace Course_Site.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Programming_CoursesContext db;
-
-        public HomeController(ILogger<HomeController> logger, Programming_CoursesContext db)
+        private readonly Academy academy;
+        public HomeController(ILogger<HomeController> logger, Programming_CoursesContext db, Academy academy)
         {
             _logger = logger;
             this.db = db;
-
+            this.academy = academy;
         }
-       
 
+    
         public IActionResult Index()
         {
             return View();
@@ -73,27 +76,56 @@ namespace Course_Site.Controllers
             return View(courses);
         }
         [HttpGet]
-        public IActionResult GetCourse(string? course)
+        
+        public IActionResult School()
         {
-            course = course.ToUpper();
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            IEnumerable<ProgrammingCourse> model = db.ProgrammingCourses.Where(x => x.CourseName.Contains(course)).ToList();
-
-            return View(model);
+            return View(academy.Students.ToList());
         }
-
-        public IActionResult Searching(int? page)
+        public async Task<IActionResult> GetCourse(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-            var courses = from c in db.ProgrammingCourses
-                          orderby c.CourseId
-                          select c;
-            int pagesize = 3;
-            int pageNumber = (page ?? 1);
-            return View(courses.ToPagedList(pageNumber, pagesize));
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DurationSortParm"] = sortOrder == "Duration" ? "duration_desc" : "Duration";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price"; ;
+            ViewData["CurrentFilter"] = searchString;
+            
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            var courses = from s in db.ProgrammingCourses
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                courses = courses.Where(s => s.CourseName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    courses = courses.OrderBy(s =>  s.CourseName);
+                    break;
+                case "Duration":
+                    courses = courses.OrderBy(s => s.Duration);
+                    break;
+                case "duration_desc":
+                    courses = courses.OrderByDescending(s => s.Duration);
+                    break;
+                case "Price":
+                    courses = courses.OrderBy(s =>(double) s.Price);
+                    break;
+                case "price_desc":
+                    courses = courses.OrderByDescending(s => (double)s.Price);
+                    break;
+                default:
+                    courses = courses.OrderBy(s => s.CourseId);
+                    break;
+            }
+            int pageSize = 3;
+            return View(courses);
         }
 
 

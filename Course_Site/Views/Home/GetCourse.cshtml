@@ -1,14 +1,24 @@
 ﻿@using Course.Shared
 @model IEnumerable<ProgrammingCourse>
+@using Course_Site.Models
 @{
     ViewData["Title"] = "GetCourse";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Pager pager = new Pager();
+    int PageNo = 0;
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        PageNo = pager.CurrentPage;
+    }
 }
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/table.css" />
+    <link rel="stylesheet" href="~/css/pagination.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <title>Table</title>
 </head>
 
@@ -37,32 +47,62 @@
     <h1 class="table">Information Table</h1>
     <hr>
 
+
     <table class="center">
-        <tr id="header">
-            <th>Course Name</th>
-            <th>Duration</th>
-            <th>FutureJob</th>
-            <th>Price</th>
+        <tr>
+                <th>
+                    <a asp-action="GetCourse" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.CourseName)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    <a asp-action="GetCourse" asp-route-sortOrder="@ViewData["DurationSortParm"]">@Html.DisplayNameFor(model => model.Duration)</a>
+                </th>
+                <th>
+                    <a asp-action="GetCourse" asp-route-sortOrder="@ViewData["PriceSortParm"]">@Html.DisplayNameFor(model => model.Price)</a>
+                </th>
+            <th></th>
         </tr>
-                @if (Model is not null)
-                {
-                    @foreach (ProgrammingCourse p in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(c=>p.CourseName)</td>
-                            <td>@Html.DisplayFor(c=>p.Duration)</td>
-                            <td>@Html.DisplayFor(c=>p.FutureJob)</td>
-                            <td>@Html.DisplayFor(c=>p.Price)</td>
-
-                        </tr>
-                        
-
+                @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="/Home/Courses?pg=@item.CourseId">@Html.DisplayFor(c=>item.CourseId)</a> 
+            </td>
+            <td>
+                <a href="/Home/Courses?pg=@item.CourseId">@Html.DisplayFor(c=>item.CourseName)</a> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CourseId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+            </td>
+        </tr>
         
-        }
-        }
+    }
     </table>
-
-      </div>
+    
+            @if (pager.TotalPages > 0)
+            {
+                <ul class="pagination">
+                    @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+                    {
+                        <li class="pagination_li pageNumber page-item @(pge == pager.CurrentPage ? "active" : "")">
+                            <a class="pagination_a" asp-controller = "Home" asp-action="GetCourse" asp-route-pg="@pge">@pge</a>
+                        </li>
+                    }
+                </ul>
+            }
+            <script type="text/javascript"></script>
+                <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="~/js/PAG.js"></script>
+        </div>
     </section>
 
   </main><!-- End #main -->
