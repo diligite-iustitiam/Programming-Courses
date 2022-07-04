@@ -1,7 +1,10 @@
-﻿@model IEnumerable<Student>
+﻿@using Microsoft.EntityFrameworkCore;
+@using Course_Site.Data;
+@model IEnumerable<Student>
 @{
     ViewData["Title"] = "School";
     Layout = "~/Views/Shared/_Layout.cshtml";
+     Academy academy = new();
 }
 
 <head>
@@ -48,18 +51,21 @@
                 @if (Model is not null)
                 {
                     
-                    @foreach (Student p in Model)
+                    @foreach (Student p in academy.Students.Include(p=>p.Faculties))
                     {
-                        
-                    
+                        @foreach (Faculty f in p.Faculties) {
+
                             <tr id="tr">  
-                                
+
                                 <td id="td"> 
                                     @Html.DisplayFor(c=>p.LastName)
-                                 </td>                             
+                                 </td>     
+                                 <td id="td"> 
+                                    @Html.DisplayFor(t=>f.Title)
+                                 </td>     
                                 
                            </tr>
-                    
+                    }
                     }
                 }
 
@@ -87,7 +93,7 @@
   <!-- Template Main JS File -->
   <script src="~/js/main.js"></script>
 
-  @{
-
-  }
+@{
+    
+}
 

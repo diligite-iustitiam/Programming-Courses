@@ -6,7 +6,10 @@ namespace Course_Site.Data
     public class Academy : DbContext
     {
         
+        public Academy()
+        {
 
+        }
         public Academy(DbContextOptions<Academy> options)
             : base(options)
         {
