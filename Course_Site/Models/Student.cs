@@ -9,7 +9,7 @@ namespace Course_Site.Models
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
-        public ICollection<Faculty>? Courses { get; set; }
+        public ICollection<Faculty>? Faculties{ get; set; }
     }
 
 }

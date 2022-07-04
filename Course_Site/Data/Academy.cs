@@ -5,9 +5,7 @@ namespace Course_Site.Data
 {
     public class Academy : DbContext
     {
-        public Academy()
-        {
-        }
+        
 
         public Academy(DbContextOptions<Academy> options)
             : base(options)
@@ -82,17 +80,17 @@ namespace Course_Site.Data
               .HasData(csharp, webdev, python);
 
             modelBuilder.Entity<Student>()
-              .HasMany(c => c.Courses)
+              .HasMany(c => c.Faculties)
               .WithMany(s => s.Students)
               .UsingEntity(e => e.HasData(
                 // all students signed up for C# course
-                new { CoursesCourseId = 1, StudentsStudentId = 1 },
-                new { CoursesCourseId = 1, StudentsStudentId = 2 },
-                new { CoursesCourseId = 1, StudentsStudentId = 3 },
+                new { FacultiesFacultyId = 1, StudentsStudentId = 1 },
+                new { FacultiesFacultyId = 1, StudentsStudentId = 2 },
+                new { FacultiesFacultyId = 1, StudentsStudentId = 3 },
                 // only Bob signed up for Web Dev
-                new { CoursesCourseId = 2, StudentsStudentId = 2 },
+                new { FacultiesFacultyId = 2, StudentsStudentId = 2 },
                 // only Cecilia signed up for Python
-                new { CoursesCourseId = 3, StudentsStudentId = 3 }
+                new { FacultiesFacultyId = 3, StudentsStudentId = 3 }
               ));
         }
     }
