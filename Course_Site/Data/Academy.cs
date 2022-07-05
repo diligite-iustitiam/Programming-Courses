@@ -5,7 +5,7 @@ namespace Course_Site.Data
 {
     public class Academy : DbContext
     {
-        
+
         public Academy()
         {
 
@@ -14,9 +14,9 @@ namespace Course_Site.Data
             : base(options)
         {
         }
-        public DbSet<Student>? Students { get; set; }
-        public DbSet<Faculty>? Courses { get; set; }
-        public DbSet<StudentFaculties> StudentFaculties { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Student> Students { get; set; }
 
         protected override void OnConfiguring(
           DbContextOptionsBuilder optionsBuilder)
@@ -34,77 +34,10 @@ namespace Course_Site.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Fluent API validation rules
+            modelBuilder.Entity<Faculty>().ToTable("Faculty");
+            modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
+            modelBuilder.Entity<Student>().ToTable("Student");
 
-            modelBuilder.Entity<Student>()
-              .Property(s => s.StudentId).ValueGeneratedNever();
-
-            // populate database with sample data
-
-            Student alice = new()
-            {
-                StudentId = 1,
-                FirstName = "Alice",
-                LastName = "Jones"
-            };
-            Student bob = new()
-            {
-                StudentId = 2,
-                FirstName = "Bob",
-                LastName = "Smith"
-            };
-            Student cecilia = new()
-            {
-                StudentId = 3,
-                FirstName = "Cecilia",
-                LastName = "Ramirez"
-            };
-
-            Faculty csharp = new()
-            {
-                FacultyId = 1,
-                Title = "C# 10 and .NET 6",
-            };
-
-            Faculty webdev = new()
-            {
-                FacultyId = 2,
-                Title = "Web Development",
-            };
-
-            Faculty python = new()
-            {
-                FacultyId = 3,
-                Title = "Python for Beginners",
-            };
-
-            modelBuilder.Entity<Student>()
-              .HasData(alice, bob, cecilia);
-
-            modelBuilder.Entity<Faculty>()
-              .HasData(csharp, webdev, python);
-
-            modelBuilder.Entity<Student>()
-              .HasMany(c => c.Faculties)
-              .WithMany(s => s.Students)
-              .UsingEntity(e => e.HasData(
-                // all students signed up for C# course
-                new { FacultiesFacultyId = 1, StudentsStudentId = 1 },
-                new { FacultiesFacultyId = 1, StudentsStudentId = 2 },
-                new { FacultiesFacultyId = 1, StudentsStudentId = 3 },
-                // only Bob signed up for Web Dev
-                new { FacultiesFacultyId = 2, StudentsStudentId = 2 },
-                // only Cecilia signed up for Python
-                new { FacultiesFacultyId = 3, StudentsStudentId = 3 }
-              ));
-            modelBuilder.Entity<StudentFaculties>()
-   .HasOne(x => x.student)
-   .WithMany(x => x.StudentFaculties)
-   .HasForeignKey(x => x.StudentId);
-
-            modelBuilder.Entity<StudentFaculties>()
-              .HasOne(x => x.faculty)
-              .WithMany(x => x.StudentFaculties)
-              .HasForeignKey(x => x.FacultyId);
         }
     }
 }

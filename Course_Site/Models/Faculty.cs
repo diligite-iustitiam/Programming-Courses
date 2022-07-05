@@ -1,16 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Course_Site.Models
 {
     public class Faculty
     {
-        
-        public int FacultyId { get; set; }
 
-        
-        public string? Title { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int FacultyID { get; set; }
+        public string Title { get; set; }
+        public int Credits { get; set; }
 
-        public ICollection<Student>? Students { get; set; }
-        public ICollection<StudentFaculties>? StudentFaculties { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

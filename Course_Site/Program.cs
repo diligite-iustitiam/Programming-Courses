@@ -24,6 +24,7 @@ builder.Services.AddAcademyContext();
 builder.Services.AddNorthwindContext();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
 //builder.Services.AddDbContext<Academy>(options => options.UseSqlite("AcademyConnection"));
 
 builder.Services.AddControllersWithViews();

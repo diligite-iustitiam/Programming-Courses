@@ -4,13 +4,13 @@ namespace Course_Site.Models
 {
     public class Student
     {
-        [Key]
-        public int StudentId { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        
+        public int ID { get; set; }
+        public string LastName { get; set; }
+        public string FirstMidName { get; set; }
+        public DateTime EnrollmentDate { get; set; }
 
-        public ICollection<Faculty>? Faculties{ get; set; }
-        public ICollection<StudentFaculties>? StudentFaculties { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
     }
 
 }
