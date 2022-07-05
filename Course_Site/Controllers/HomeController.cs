@@ -79,7 +79,7 @@ namespace Course_Site.Controllers
         
         public IActionResult School()
         {
-            return View(academy.Students.ToList());
+            return View(academy.StudentFaculties.ToList());
         }
         public async Task<IActionResult> GetCourse(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {

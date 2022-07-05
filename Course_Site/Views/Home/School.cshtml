@@ -1,6 +1,6 @@
 ﻿@using Microsoft.EntityFrameworkCore;
 @using Course_Site.Data;
-@model IEnumerable<Student>
+@model IEnumerable<StudentFaculties>
 @{
     ViewData["Title"] = "School";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,21 +51,24 @@
                 @if (Model is not null)
                 {
                     
-                    @foreach (Student p in academy.Students.Include(p=>p.Faculties))
+
+                    @foreach (var p in Model)
                     {
-                        @foreach (Faculty f in p.Faculties) {
+                        
 
                             <tr id="tr">  
 
                                 <td id="td"> 
-                                    @Html.DisplayFor(c=>p.LastName)
-                                 </td>     
+                                    @Html.DisplayFor(c=>p.FacultyId)
+                                 </td>    
                                  <td id="td"> 
-                                    @Html.DisplayFor(t=>f.Title)
-                                 </td>     
+                                    @Html.DisplayFor(c=>p.StudentId)
+                                 </td>
+                                 
+                                 
                                 
                            </tr>
-                    }
+                    
                     }
                 }
 

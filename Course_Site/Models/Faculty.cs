@@ -11,5 +11,6 @@ namespace Course_Site.Models
         public string? Title { get; set; }
 
         public ICollection<Student>? Students { get; set; }
+        public ICollection<StudentFaculties>? StudentFaculties { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace Course_Site.Data
         }
         public DbSet<Student>? Students { get; set; }
         public DbSet<Faculty>? Courses { get; set; }
+        public DbSet<StudentFaculties> StudentFaculties { get; set; }
 
         protected override void OnConfiguring(
           DbContextOptionsBuilder optionsBuilder)
@@ -95,6 +96,15 @@ namespace Course_Site.Data
                 // only Cecilia signed up for Python
                 new { FacultiesFacultyId = 3, StudentsStudentId = 3 }
               ));
+            modelBuilder.Entity<StudentFaculties>()
+   .HasOne(x => x.student)
+   .WithMany(x => x.StudentFaculties)
+   .HasForeignKey(x => x.StudentId);
+
+            modelBuilder.Entity<StudentFaculties>()
+              .HasOne(x => x.faculty)
+              .WithMany(x => x.StudentFaculties)
+              .HasForeignKey(x => x.FacultyId);
         }
     }
 }
