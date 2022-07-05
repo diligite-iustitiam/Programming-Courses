@@ -11,17 +11,22 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-    var builder = WebApplication.CreateBuilder(args);
+
+var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+Academy academy = new();
 
+DbInitializer.Initialize(academy);
 
-
- var SqLiteconnection = builder.Configuration.GetConnectionString("NorthwindConnection");
+var AcademyConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+var SqLiteconnection = builder.Configuration.GetConnectionString("NorthwindConnection");
 var SchoolConnection = builder.Configuration.GetConnectionString("AcademyConnection");
+
 builder.Services.AddAcademyContext();
 builder.Services.AddNorthwindContext();
+builder.Services.AddDbContext<Academy>(option => option.UseSqlServer(AcademyConnection));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
@@ -33,6 +38,8 @@ builder.Services.AddControllersWithViews();
 
     var app = builder.Build();
 
+ 
+
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
@@ -42,16 +49,16 @@ builder.Services.AddControllersWithViews();
         app.UseHsts();
     }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
 
-app.UseRouting();
+    app.UseRouting();
 
-app.UseAuthorization();
+    app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
 
