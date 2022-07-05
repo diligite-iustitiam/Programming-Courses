@@ -77,10 +77,10 @@ namespace Course_Site.Controllers
         }
         [HttpGet]
         
-        public IActionResult School()
+        /*public IActionResult School()
         {
             return View(academy.Students.ToList());
-        }
+        }*/
         public async Task<IActionResult> GetCourse(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;

@@ -1,4 +1,11 @@
-﻿@using Microsoft.EntityFrameworkCore;
+﻿
+
+@{
+    ViewData["Title"] = "School";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.EntityFrameworkCore;
 @using Course_Site.Data;
 @model IEnumerable<Student>
 @{
@@ -99,4 +106,6 @@
 @{
     
 }
+
+
 
