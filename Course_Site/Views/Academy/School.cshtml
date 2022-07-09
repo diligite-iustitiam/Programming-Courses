@@ -55,6 +55,7 @@
             <th>LastName</th>
             <th>EnrollmentDate</th>
             <th>Details</th>
+            <th>Edit</th>
         </tr>
                 @if (Model is not null)
                 {
@@ -81,6 +82,9 @@
                                  
                                  <td id="td"> 
                                     <a asp-action="Details" asp-route-id="@p.StudentID">Details</a>
+                                 </td>
+                                 <td id="td"> 
+                                    <a asp-action="Edit" asp-route-id="@p.StudentID">Edit</a>
                                  </td>
                                 
                            </tr>

@@ -48,6 +48,58 @@ namespace Course_Site.Controllers
 
             return View(student);
         }
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPost(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var studentToUpdate = await academy.Students.FirstOrDefaultAsync(s => s.StudentID == id);
+            if (await TryUpdateModelAsync<Student>(
+                studentToUpdate,
+                "",
+                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate))
+            {
+                try
+                {
+                    await academy.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
+            }
+            return View(studentToUpdate);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(
+    [Bind("EnrollmentDate,FirstMidName,LastName")] Student student)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    academy.Add(student);
+                    await academy.SaveChangesAsync();
+                    return RedirectToAction(nameof(School));
+                }
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+            return View(student);
+        }
         public IActionResult School()
         {
             return View(academy.Students.ToList());
