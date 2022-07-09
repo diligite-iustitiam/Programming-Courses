@@ -28,6 +28,26 @@ namespace Course_Site.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var student = await academy.Students
+                .Include(s => s.Enrollments)
+                    .ThenInclude(e => e.Faculty)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.StudentID == id);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
         public IActionResult School()
         {
             return View(academy.Students.ToList());

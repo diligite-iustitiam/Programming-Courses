@@ -50,10 +50,11 @@
     <table class="center">
         <tr id="header">
 
-            <th>Course Name</th>
-            <th>Duration</th>
-            <th>FutureJob</th>
-            <th>Price</th>
+            <th>StudentID</th>
+            <th>FirstMidName</th>
+            <th>LastName</th>
+            <th>EnrollmentDate</th>
+            <th>Details</th>
         </tr>
                 @if (Model is not null)
                 {
@@ -66,13 +67,21 @@
                             <tr id="tr">  
 
                                 <td id="td"> 
-                                    @Html.DisplayFor(c=>p.ID)
+                                    @Html.DisplayFor(c=>p.StudentID)
                                  </td>    
                                  <td id="td"> 
                                     @Html.DisplayFor(c=>p.FirstMidName)
                                  </td>
+                                 <td id="td"> 
+                                    @Html.DisplayFor(c=>p.LastName)
+                                 </td>
+                                 <td id="td"> 
+                                    @Html.DisplayFor(c=>p.EnrollmentDate)
+                                 </td>
                                  
-                                 
+                                 <td id="td"> 
+                                    <a asp-action="Details" asp-route-id="@p.StudentID">Details</a>
+                                 </td>
                                 
                            </tr>
                     
