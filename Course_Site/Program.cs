@@ -7,6 +7,7 @@ using Course_Site.Data;
 using Microsoft.Extensions.DependencyInjection;
 using static System.Console;
 using Microsoft.EntityFrameworkCore;
+using Course_Site.Data;
 
 
 
@@ -14,23 +15,22 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+SchoolContext schoolContext = new();
+DbInitializer.Initialize(schoolContext);
 
 // Add services to the container.
-Academy academy = new();
-
-DbInitializer.Initialize(academy);
 
 var AcademyConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 var SqLiteconnection = builder.Configuration.GetConnectionString("NorthwindConnection");
-var SchoolConnection = builder.Configuration.GetConnectionString("AcademyConnection");
+var SchoolConnection = builder.Configuration.GetConnectionString("SchoolContextConnection");
 
-builder.Services.AddAcademyContext();
+
 builder.Services.AddNorthwindContext();
-builder.Services.AddDbContext<Academy>(option => option.UseSqlServer(AcademyConnection));
+builder.Services.AddSchoolContext();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-//builder.Services.AddDbContext<Academy>(options => options.UseSqlite("AcademyConnection"));
+//builder.Services.AddDbContext<SchoolContext>(options => options.UseSqlite(SchoolConnection));
 
 builder.Services.AddControllersWithViews();
 

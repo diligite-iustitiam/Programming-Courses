@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -40,7 +41,7 @@
         <ul>
           <li>@Html.ActionLink(" Home ","Index","Home", new{@class ="nav-link"})</li>
           <li>@Html.ActionLink(" Inner Page ","Inner_Page","Home", new{@class ="nav-link"})</li>
-          <li>@Html.ActionLink(" Our Students ","School","Academy", new{@class ="nav-link"})</li>
+          <li>@Html.ActionLink(" Index ","Index","Students", new{@class ="nav-link"})</li>
          
           
          <form asp-action="Courses" method="get">
@@ -161,6 +162,6 @@
       </div>
     </div>
   </footer><!-- End Footer -->
-    
+    @RenderSectionAsync("Scripts",required: false);
 </body>
 </html>

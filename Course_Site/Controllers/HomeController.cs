@@ -16,12 +16,12 @@ namespace Course_Site.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Programming_CoursesContext db;
-        private readonly Academy academy;
-        public HomeController(ILogger<HomeController> logger, Programming_CoursesContext db, Academy academy)
+        
+        public HomeController(ILogger<HomeController> logger, Programming_CoursesContext db)
         {
             _logger = logger;
             this.db = db;
-            this.academy = academy;
+            
         }
 
     

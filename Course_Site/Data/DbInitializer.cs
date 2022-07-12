@@ -1,97 +1,105 @@
-﻿
-using Course_Site.Models;
+﻿using Course_Site.Models;
+   
 namespace Course_Site.Data;
+
 public static class DbInitializer
 {
-    public static void CreateDbIfNotExists(IHost host)
-    {
-        using (var scope = host.Services.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-            try
-            {
-                var context = services.GetRequiredService<Academy>();
-                DbInitializer.Initialize(context);
-            }
-            catch (Exception ex)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred creating the DB.");
-            }
-        }
-    }
-    public static void Initialize(Academy context)
+    public static void Initialize(SchoolContext context)
     {
         context.Database.EnsureCreated();
-
-        // Look for any students.
-        if (context.Students.Any())
+       
+       if (context.Students.Any())
         {
             return;   // DB has been seeded
         }
 
         var students = new Student[]
         {
-            new Student{FirstMidName="Carson",LastName="Alexander",EnrollmentDate=DateTime.Parse("2005-09-01")},
-            new Student{FirstMidName="Meredith",LastName="Alonso",EnrollmentDate=DateTime.Parse("2002-09-01")},
-            new Student{FirstMidName="Arturo",LastName="Anand",EnrollmentDate=DateTime.Parse("2003-09-01")},
-            new Student{FirstMidName="Gytis",LastName="Barzdukas",EnrollmentDate=DateTime.Parse("2002-09-01")},
-            new Student{FirstMidName="Yan",LastName="Li",EnrollmentDate=DateTime.Parse("2002-09-01")},
-            new Student{FirstMidName="Peggy",LastName="Justice",EnrollmentDate=DateTime.Parse("2001-09-01")},
-            new Student{FirstMidName="Laura",LastName="Norman",EnrollmentDate=DateTime.Parse("2003-09-01")},
-            new Student{FirstMidName="Nino",LastName="Olivetto",EnrollmentDate=DateTime.Parse("2005-09-01")}
+            new Student{StudentId =1,StudentName="Carson Alexander",Email="carsonAq403@gmail.com",StudentBirthDate=DateTime.Parse("2005-09-01"),RegTime=DateTime.Parse("2022-05-02")},
+            new Student{StudentId =2,StudentName="Meredith Alonso",Email="mereAlo03@gmail.com",StudentBirthDate=DateTime.Parse("2001-03-01"),RegTime=DateTime.Parse("2018-01-22")},
+            new Student{StudentId =3,StudentName="Arturo Anand",Email="ArturoK56@gmail.com",StudentBirthDate=DateTime.Parse("1998-03-09"),RegTime=DateTime.Parse("2017-11-22")}
         };
+
         foreach (Student s in students)
         {
             context.Students.Add(s);
         }
+        
         context.SaveChanges();
-        if (context.Faculties.Any())
+
+        if (context.Courses.Any())
         {
             return;   // DB has been seeded
         }
 
-        var courses = new Faculty[]
+        var courses = new Courses[]
+            {
+            new Courses{CourseId=1,Title="Chemistry",CourseDescription="" +
+            "Chemistry is the branch of science that deals" +
+            " with the properties, composition," +
+            " and structure of elements and compounds," +
+            " how they can change, and the energy that is released or absorbed when they change.",DepartmentId = 1},
+            new Courses{CourseId=2,Title="Microeconomics",CourseDescription="Microeconomics is a branch of mainstream economics that studies the behavior of individuals and firms in making decisions regarding" +
+            " the allocation of scarce resources and the interactions among these individuals and firms.",DepartmentId = 2},
+            new Courses{CourseId=3,Title="Macroeconomics",CourseDescription="Macroeconomics is the branch of economics" +
+            " that deals with the structure, performance, behavior, and decision-making" +
+            " of the whole, or aggregate, economy. The two main areas of macroeconomic" +
+            " research are long-term economic growth and shorter-term business cycles.",DepartmentId=2}
+
+            };
+        foreach (Courses c in courses)
         {
-            new Faculty{FacultyID=1050,Title="Chemistry",Credits=3},
-            new Faculty{FacultyID=4022,Title="Microeconomics",Credits=3},
-            new Faculty{FacultyID=4041,Title="Macroeconomics",Credits=3},
-            new Faculty{FacultyID=1045,Title="Calculus",Credits=4},
-            new Faculty{FacultyID=3141,Title="Trigonometry",Credits=4},
-            new Faculty{FacultyID=2021,Title="Composition",Credits=3},
-            new Faculty{FacultyID=2042,Title="Literature",Credits=4}
-        };
-        foreach (Faculty c in courses)
-        {
-            context.Faculties.Add(c);
+            context.Courses.Add(c);
         }
         context.SaveChanges();
-        if (context.Enrollments.Any())
+
+        if (context.Departments.Any())
         {
             return;   // DB has been seeded
         }
-        var enrollments = new Enrollment[]
+        var departments = new Department[]
         {
-            new Enrollment{StudentID=1,FacultyID=1050,Grade=Grade.A},
-            new Enrollment{StudentID=1,FacultyID=4022,Grade=Grade.C},
-            new Enrollment{StudentID=1,FacultyID=4041,Grade=Grade.B},
-            new Enrollment{StudentID=2,FacultyID=1045,Grade=Grade.B},
-            new Enrollment{StudentID=2,FacultyID=3141,Grade=Grade.F},
-            new Enrollment{StudentID=2,FacultyID=2021,Grade=Grade.F},
-            new Enrollment{StudentID=3,FacultyID=1050},
-            new Enrollment{StudentID=4,FacultyID=1050},
-            new Enrollment{StudentID=4,FacultyID=4022,Grade=Grade.F},
-            new Enrollment{StudentID=5,FacultyID=4041,Grade=Grade.C},
-            new Enrollment{StudentID=6,FacultyID=1045},
-            new Enrollment{StudentID=7,FacultyID=3141,Grade=Grade.A},
+            new Department{ DepartmentId =1, Name="Science",Budget=10000000,StartDate=DateTime.Parse("1991-09-11"),InstructorId= 1},
+            new Department{ DepartmentId =2, Name="Economics",Budget=1370043,StartDate=DateTime.Parse("1995-04-01"),InstructorId= 2}
+
         };
-        foreach (Enrollment e in enrollments)
+        foreach (Department d in departments)
         {
-            context.Enrollments.Add(e);
+            context.Departments.Add(d);
         }
         context.SaveChanges();
-    }
+        if (context.Instructors.Any())
+        {
+            return;   // DB has been seeded
+        }
+        var instructors = new Instructor[]
+        {
+            new Instructor{InstructorId = 1, InstructorName="Dmitro Mendeleev", HireDate=DateTime.Parse("1850-02-08") },
+            new Instructor{InstructorId = 2, InstructorName="Adam Smith", HireDate=DateTime.Parse("1754-06-16") }
+        };
+        foreach (Instructor i in instructors)
+        {
+            context.Instructors.Add(i);
+        }
+        context.SaveChanges();
+        if (context.OfficeAssignments.Any())
+        {
+            return;   // DB has been seededs
+        }
+        var office = new OfficeAssignment[]
+        {
+            new OfficeAssignment{InstructorId = 1, Location="Madrid"},
+            new OfficeAssignment{InstructorId = 2, Location="London"},
+        };
+        foreach (OfficeAssignment o in office)
+        {
+            context.OfficeAssignments.Add(o);
+        }
+        context.SaveChanges();
+
 
     }
-
+}
+        
+    
 
